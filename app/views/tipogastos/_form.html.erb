@@ -1,0 +1,21 @@
+<%= form_for(@tipogasto) do |f| %>
+  <% if @tipogasto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipogasto.errors.count, "error") %> prohibited this tipogasto from being saved:</h2>
+
+      <ul>
+      <% @tipogasto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tga_desc %><br>
+    <%= f.text_field :tga_desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<%= form_for(@formapago) do |f| %>
+  <% if @formapago.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@formapago.errors.count, "error") %> prohibited this formapago from being saved:</h2>
+
+      <ul>
+      <% @formapago.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fpa_desc %><br>
+    <%= f.text_field :fpa_desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

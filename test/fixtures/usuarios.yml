@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usu_nombre: MyString
+  usu_usuario: MyString
+  usu_clave: MyString
+
+two:
+  usu_nombre: MyString
+  usu_usuario: MyString
+  usu_clave: MyString

@@ -1,0 +1,25 @@
+<%= form_for(@subrubro) do |f| %>
+  <% if @subrubro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subrubro.errors.count, "error") %> prohibited this subrubro from being saved:</h2>
+
+      <ul>
+      <% @subrubro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sru_desc %><br>
+    <%= f.text_field :sru_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :rubro_id %><br>
+    <%= f.text_field :rubro_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

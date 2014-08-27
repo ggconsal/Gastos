@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mov fecha:</strong>
+  <%= @movimiento.mov_fecha %>
+</p>
+
+<p>
+  <strong>Mov importe:</strong>
+  <%= @movimiento.mov_importe %>
+</p>
+
+<p>
+  <strong>Mov obs:</strong>
+  <%= @movimiento.mov_obs %>
+</p>
+
+<p>
+  <strong>Mov lote:</strong>
+  <%= @movimiento.mov_lote %>
+</p>
+
+<p>
+  <strong>Subrubro:</strong>
+  <%= @movimiento.subrubro %>
+</p>
+
+<p>
+  <strong>Tipogasto:</strong>
+  <%= @movimiento.tipogasto %>
+</p>
+
+<p>
+  <strong>Tipomov:</strong>
+  <%= @movimiento.tipomov %>
+</p>
+
+<p>
+  <strong>Formapago:</strong>
+  <%= @movimiento.formapago %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @movimiento.usuario %>
+</p>
+
+<%= link_to 'Edit', edit_movimiento_path(@movimiento) %> |
+<%= link_to 'Back', movimientos_path %>

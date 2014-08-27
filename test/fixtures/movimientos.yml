@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mov_fecha: 2014-08-27
+  mov_importe: 9.99
+  mov_obs: MyText
+  mov_lote: 1
+  subrubro_id: 
+  tipogasto_id: 
+  tipomov_id: 
+  formapago_id: 
+  usuario_id: 
+
+two:
+  mov_fecha: 2014-08-27
+  mov_importe: 9.99
+  mov_obs: MyText
+  mov_lote: 1
+  subrubro_id: 
+  tipogasto_id: 
+  tipomov_id: 
+  formapago_id: 
+  usuario_id: 

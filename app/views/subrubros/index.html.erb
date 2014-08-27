@@ -1,0 +1,27 @@
+<h1>Listing subrubros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sru desc</th>
+      <th>Rubro</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subrubros.each do |subrubro| %>
+      <tr>
+        <td><%= subrubro.sru_desc %></td>
+        <td><%= subrubro.rubro %></td>
+        <td><%= link_to 'Show', subrubro %></td>
+        <td><%= link_to 'Edit', edit_subrubro_path(subrubro) %></td>
+        <td><%= link_to 'Destroy', subrubro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subrubro', new_subrubro_path %>

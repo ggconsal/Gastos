@@ -1,0 +1,53 @@
+<%= form_for(@movimiento) do |f| %>
+  <% if @movimiento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movimiento.errors.count, "error") %> prohibited this movimiento from being saved:</h2>
+
+      <ul>
+      <% @movimiento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mov_fecha %><br>
+    <%= f.date_select :mov_fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :mov_importe %><br>
+    <%= f.text_field :mov_importe %>
+  </div>
+  <div class="field">
+    <%= f.label :mov_obs %><br>
+    <%= f.text_area :mov_obs %>
+  </div>
+  <div class="field">
+    <%= f.label :mov_lote %><br>
+    <%= f.number_field :mov_lote %>
+  </div>
+  <div class="field">
+    <%= f.label :subrubro_id %><br>
+    <%= f.text_field :subrubro_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tipogasto_id %><br>
+    <%= f.text_field :tipogasto_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tipomov_id %><br>
+    <%= f.text_field :tipomov_id %>
+  </div>
+  <div class="field">
+    <%= f.label :formapago_id %><br>
+    <%= f.text_field :formapago_id %>
+  </div>
+  <div class="field">
+    <%= f.label :usuario_id %><br>
+    <%= f.text_field :usuario_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

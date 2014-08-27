@@ -1,0 +1,2 @@
+module TipogastosHelper
+end

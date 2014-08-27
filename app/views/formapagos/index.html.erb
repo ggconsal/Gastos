@@ -1,0 +1,25 @@
+<h1>Listing formapagos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fpa desc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @formapagos.each do |formapago| %>
+      <tr>
+        <td><%= formapago.fpa_desc %></td>
+        <td><%= link_to 'Show', formapago %></td>
+        <td><%= link_to 'Edit', edit_formapago_path(formapago) %></td>
+        <td><%= link_to 'Destroy', formapago, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Formapago', new_formapago_path %>

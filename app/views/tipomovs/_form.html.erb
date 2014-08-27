@@ -1,0 +1,21 @@
+<%= form_for(@tipomov) do |f| %>
+  <% if @tipomov.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipomov.errors.count, "error") %> prohibited this tipomov from being saved:</h2>
+
+      <ul>
+      <% @tipomov.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tmo_desc %><br>
+    <%= f.text_field :tmo_desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
