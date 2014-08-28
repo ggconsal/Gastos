@@ -7,8 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="Contenedor-menu" class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#"> eGastos </a>
+			<ul class="nav">
+  			<li class="active"><a href="#">Home</a></li>
+  			<li><%= link_to "Rubros", rubros_path %> </li>
+  			<li> <%= link_to "SubRubros", subrubros_path %> </li>
+  			<li> <%= link_to "TipoGastos", tipogastos_path %> </li>
+			</ul>
+		</div>
+		
+	</div>
+	
+</div>
 
-<%= yield %>
+<div id="Contenedor-general" class="container"> 
+		<%= yield %>
+</div>
 
 </body>
 </html>
