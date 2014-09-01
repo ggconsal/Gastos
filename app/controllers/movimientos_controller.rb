@@ -7,6 +7,10 @@ class MovimientosController < ApplicationController
     @movimientos = Movimiento.all
   end
 
+  def lista_sr
+    @sr_mov = Subrubro.all
+  end
+
   # GET /movimientos/1
   # GET /movimientos/1.json
   def show

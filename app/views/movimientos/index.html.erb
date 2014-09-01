@@ -1,41 +1,43 @@
-<h1>Listing movimientos</h1>
+<div class="page-header">
+  <h3><u>Todos los Movimientos</u></h3>
+</div>
 
-<table>
+<table  id="tabla-movimientos" class="table table-hover">
   <thead>
     <tr>
-      <th>Mov fecha</th>
-      <th>Mov importe</th>
-      <th>Mov obs</th>
-      <th>Mov lote</th>
-      <th>Subrubro</th>
-      <th>Tipogasto</th>
-      <th>Tipomov</th>
-      <th>Formapago</th>
+      <th>Fecha</th>
+      <th>Importe</th>
+      <th>Observaciones</th>
+      <th>Lote</th>
+      <th>Sub-rubro</th>
+      <th>Tipo-Gasto</th>
+      <th>Tipo-Mov</th>
+      <th>Forma-pago</th>
       <th>Usuario</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @movimientos.each do |movimiento| %>
+    <% @movimientos.each do |vMovimiento| %>
       <tr>
-        <td><%= movimiento.mov_fecha %></td>
-        <td><%= movimiento.mov_importe %></td>
-        <td><%= movimiento.mov_obs %></td>
-        <td><%= movimiento.mov_lote %></td>
-        <td><%= movimiento.subrubro %></td>
-        <td><%= movimiento.tipogasto %></td>
-        <td><%= movimiento.tipomov %></td>
-        <td><%= movimiento.formapago %></td>
-        <td><%= movimiento.usuario %></td>
-        <td><%= link_to 'Show', movimiento %></td>
-        <td><%= link_to 'Edit', edit_movimiento_path(movimiento) %></td>
-        <td><%= link_to 'Destroy', movimiento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td id="columna-fecha"><%= vMovimiento.mov_fecha.day.to_s %>-<%= vMovimiento.mov_fecha.month .to_s %></td>
+<!--        <td><%= vMovimiento.mov_lote %></td> -->
+        <td> <% @tmprubros = Rubro.find(vMovimiento.subrubro.rubro_id) %> 
+             <%= @tmprubros.rub_desc %> </td>
+        <td><%= vMovimiento.subrubro.sru_desc %></td>
+        <td><%= vMovimiento.mov_importe %></td>
+        <td><%= vMovimiento.tipomov.tmo_desc %></td>
+        <td><%= vMovimiento.tipogasto.tga_desc %></td>
+        <td><%= vMovimiento.formapago.fpa_desc %></td>
+<!--        <td><%= vMovimiento.usuario.usu_nombre %></td> -->
+        <td id="columna-texto-largo"><%= vMovimiento.mov_obs %></td>
+        <td id="columna-mmb"><%= link_to 'Mostrar', vMovimiento %></td>
+        <td id="columna-mmb"><%= link_to 'Modificar', edit_movimiento_path(vMovimiento) %></td>
+        <td id="columna-mmb"><%= link_to 'Borrar', vMovimiento, method: :delete, data: { confirm: 'Estas seguro que queres Borrar?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<%= link_to 'Nuevo Movimiento', new_movimiento_path, class: "btn btn-primary" %>
 
-<%= link_to 'New Movimiento', new_movimiento_path %>

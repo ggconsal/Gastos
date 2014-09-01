@@ -7,26 +7,95 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="Contenedor-menu" class="navbar navbar-inverse navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="brand" href="#"> eGastos </a>
-			<ul class="nav">
-  			<li class="active"><a href="#">Home</a></li>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div id="Contenedor-menu-interno" class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">eGastos</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+  			<li><a href="#">Home</a></li>
+  			<li><%= link_to "Movimientos", movimientos_path %> </li>
   			<li><%= link_to "Rubros", rubros_path %> </li>
-  			<li> <%= link_to "SubRubros", subrubros_path %> </li>
-  			<li> <%= link_to "TipoGastos", tipogastos_path %> </li>
-			</ul>
-		</div>
-		
-	</div>
-	
-</div>
+  			<li><%= link_to "SubRubros", subrubros_path %> </li>
+        <li><%= link_to "TipoGasto", tipogastos_path %> </li>
+        <li><%= link_to "TipoMov", tipomovs_path %> </li>
+        <li><%= link_to "FormaPago", formapagos_path %> </li>
+        <li><%= link_to "Usuarios", usuarios_path %> </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
 <div id="Contenedor-general" class="container"> 
 		<%= yield %>
-		<br><br><br>
+		<br><br>
 </div>
 
 </body>
+
 </html>
+
+
+<!--
+
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+
+<nav id="Contenedor-menu" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div id="Contenedor-menu-interno" class="container">
+			<a class="brand" href="#"> eGastos </a>
+			<ul class="nav">
+  			<li><a href="#">Home</a></li>
+  			<li><%= link_to "Movimientos", movimientos_path %> </li>
+  			<li><%= link_to "Rubros", rubros_path %> </li>
+  			<li><%= link_to "SubRubros", subrubros_path %> </li>
+  			<li><%= link_to "TipoGastos", tipogastos_path %> </li>
+			</ul>
+		</div>
+</nav>
+-->
+
+    <!-- Brand and toggle get grouped for better mobile display 
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div> -->
+
+    <!-- 
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li> -->

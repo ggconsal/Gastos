@@ -6,17 +6,17 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Rubro</th>
       <th>Descripcion</th>
+      <th>Rubro</th>
     </tr>
   </thead>
   <tbody>
     <% @subrubros.each do |vSubrubro| %>
       <tr>
         <td> <%= vSubrubro.id %> </td>
+        <td> <%= vSubrubro.sru_desc %> </td>
         <td> <% @tmprubros = Rubro.find(vSubrubro.rubro_id) %> 
              <%= @tmprubros.rub_desc %> </td>
-        <td> <%= vSubrubro.sru_desc %> </td>
         <td id="columna-mmb"><%= link_to 'Mostrar', vSubrubro %></td>
         <td id="columna-mmb"><%= link_to 'Modificar', edit_subrubro_path(vSubrubro) %></td>
         <td id="columna-mmb"><%= link_to 'Borrar', vSubrubro, method: :delete, data: { confirm: 'Estas seguro que queres Borrar?' } %></td>
@@ -26,7 +26,5 @@
   
 </table>
 
-</br>
-</br>
-<%= link_to 'Nuevo Sub-Rubro', new_subrubro_path, class: "btn btn-inverse" %>
+<%= link_to 'Nuevo Sub-Rubro', new_subrubro_path, class: "btn btn-primary" %>
 

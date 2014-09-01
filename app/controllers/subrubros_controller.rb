@@ -7,6 +7,10 @@ class SubrubrosController < ApplicationController
     @subrubros = Subrubro.all
   end
 
+  def lista_sr
+    @srmov = Subrubro.find(:all)
+  end
+  
   # GET /subrubros/1
   # GET /subrubros/1.json
   def show

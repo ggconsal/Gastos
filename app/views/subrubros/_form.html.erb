@@ -12,14 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :sru_desc %><br>
+    <%= f.label "Descripcion del Sub-Rubro" %><br>
     <%= f.text_field :sru_desc %>
   </div>
   <div class="field">
-    <%= f.label :rubro_id %><br>
+    <%= f.label "Rubro al que pertenece" %><br>
     <%= f.text_field :rubro_id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <br><br>
+    <%= f.submit "Confirmar", :class => "btn btn-primary" %>
+    <%= link_to 'Ir Atras', subrubros_path, class: "btn btn-primary" %>
   </div>
 <% end %>
