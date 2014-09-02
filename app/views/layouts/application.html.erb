@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" nav-pills role="navigation">
   <div id="Contenedor-menu-interno" class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-header">
@@ -16,8 +16,18 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-  			<li><a href="#">Home</a></li>
-  			<li><%= link_to "Movimientos", movimientos_path %> </li>
+  			<li><%= link_to "Home", estadisticas_index_path %> </li>
+<!--  			<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tablas <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li> -->
+        <li><%= link_to "Movimientos", movimientos_path %> </li>
   			<li><%= link_to "Rubros", rubros_path %> </li>
   			<li><%= link_to "SubRubros", subrubros_path %> </li>
         <li><%= link_to "TipoGasto", tipogastos_path %> </li>

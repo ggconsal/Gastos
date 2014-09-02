@@ -1,0 +1,141 @@
+<div class="page-header">
+  <h3><u>Estadisticas</u></h3>
+</div>
+
+<div class="panel-group" id="accordion">
+   <div class="panel panel-info">
+      <div class="panel-heading">
+         <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+               href="#collapseOne">
+               Estadisticas - Agrupado por Rubro
+            </a>
+         </h4>
+      </div>
+<!--      <div id="collapseOne" class="panel-collapse collapse in"> -->
+      <div id="collapseOne" class="panel-collapse collapse">
+         <div class="panel-body">
+            <% @vTMPMovs = Movimiento.joins(subrubro: :rubro).select("rub_desc, sum(mov_importe) importe").where("usuario_id in (1, 2)").order("rubro_id").group("rubro_id") %>
+						<table  id="tabla-movimientos" class="table table-hover table-condensed">
+						  <thead>
+						    <tr>
+						      <th>Rubro</th>
+						      <th>Importe</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <% @vTMPMovs.each do |vMovimiento| %>
+						      <tr>
+						        <td id="columna-mmb"><%= vMovimiento.rub_desc %></td>
+						        <td id="columna-mmb"><%= vMovimiento.importe %></td>
+						      </tr>
+						    <% end %>
+						  </tbody>
+						</table>
+         </div>
+      </div>
+   </div>
+   <div class="panel panel-info">
+      <div class="panel-heading">
+         <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+               href="#collapseTwo">
+               Estadisticas - Agrupado por Sub-Rubro
+            </a>
+         </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+         <div class="panel-body">
+            <% @vTMPMovs = Movimiento.joins(subrubro: :rubro).select("rub_desc, sru_desc, sum(mov_importe) importe").where("usuario_id in (1, 2)").order("rubro_id, subrubro_id").group("rubro_id, subrubro_id") %>
+						<table  id="tabla-movimientos" class="table table-hover table-condensed">
+						  <thead>
+						    <tr>
+						      <th>Rubro</th>
+						      <th>Sub-rubro</th>
+						      <th>Importe</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <% @vTMPMovs.each do |vMovimiento| %>
+						      <tr>
+						        <td id="columna-mmb"><%= vMovimiento.rub_desc %></td>
+						        <td id="columna-mmb"><%= vMovimiento.sru_desc %></td>
+						        <td id="columna-mmb"><%= vMovimiento.importe %></td>
+						      </tr>
+						    <% end %>
+						  </tbody>
+						</table>
+         </div>
+      </div>
+   </div>
+   <div class="panel panel-info">
+      <div class="panel-heading">
+         <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+               href="#collapseThree">
+               Estadisticas - Agrupado por Tipo de Gasto
+            </a>
+         </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+         <div class="panel-body">
+            <% @vTMPMovs = Movimiento.joins(:tipogasto).select("tga_desc, sum(mov_importe) importe").where("usuario_id in (1, 2)").group("tipogasto_id") %>
+						<table  id="tabla-movimientos" class="table table-hover table-condensed">
+						  <thead>
+						    <tr>
+						      <th>Tipo de Gasto</th>
+						      <th>Importe</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <% @vTMPMovs.each do |vMovimiento| %>
+						      <tr>
+						        <td id="columna-mmb"><%= vMovimiento.tga_desc %></td>
+						        <td id="columna-mmb"><%= vMovimiento.importe %></td>
+						      </tr>
+						    <% end %>
+						  </tbody>
+						</table>
+         </div>
+      </div>
+   </div>
+   <div class="panel panel-info">
+      <div class="panel-heading">
+         <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+               href="#collapseFour">
+               Estadisticas - Agrupado por Tipo de Movimiento
+            </a>
+         </h4>
+      </div>
+      <div id="collapseFour" class="panel-collapse collapse">
+         <div class="panel-body">
+            <% @vTMPMovs = Movimiento.joins(:tipomov).select("tmo_desc, sum(mov_importe) importe").where("usuario_id in (1, 2)").group("tipomov_id") %>
+						<table  id="tabla-movimientos" class="table table-hover table-condensed">
+						  <thead>
+						    <tr>
+						      <th>Tipo de Movimiento</th>
+						      <th>Importe</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <% @vTMPMovs.each do |vMovimiento| %>
+						      <tr>
+						        <td id="columna-mmb"><%= vMovimiento.tmo_desc %></td>
+						        <td id="columna-mmb"><%= vMovimiento.importe %></td>
+						      </tr>
+						    <% end %>
+						  </tbody>
+						</table>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<!--
+<div>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+</div>
+-->

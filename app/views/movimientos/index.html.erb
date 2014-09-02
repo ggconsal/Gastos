@@ -21,7 +21,7 @@
       <tr>
         <td id="columna-fecha"><%= vMovimiento.mov_fecha.day.to_s %>-<%= vMovimiento.mov_fecha.month .to_s %></td>
 <!--        <td><%= vMovimiento.mov_lote %></td> -->
-        <td id="columna-mmb"> <% @tmprubros = Rubro.find(vMovimiento.subrubro.rubro_id) %> 
+        <td id="columna-fecha"> <% @tmprubros = Rubro.find(vMovimiento.subrubro.rubro_id) %>
              <%= @tmprubros.rub_desc %> </td>
         <td id="columna-mmb"><%= vMovimiento.subrubro.sru_desc %></td>
         <td id="columna-mmb"><%= vMovimiento.mov_importe %></td>
