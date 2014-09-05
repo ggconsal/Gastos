@@ -32,7 +32,7 @@ class SubrubrosController < ApplicationController
 
     respond_to do |format|
       if @subrubro.save
-        format.html { redirect_to @subrubro, notice: 'Subrubro was successfully created.' }
+        format.html { redirect_to @subrubro, notice: 'Se creo correctamente el Sub-Rubro.' }
         format.json { render :show, status: :created, location: @subrubro }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class SubrubrosController < ApplicationController
   def update
     respond_to do |format|
       if @subrubro.update(subrubro_params)
-        format.html { redirect_to @subrubro, notice: 'Subrubro was successfully updated.' }
+        format.html { redirect_to @subrubro, notice: 'Se actualizo correctamente el Sub-Rubro.' }
         format.json { render :show, status: :ok, location: @subrubro }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class SubrubrosController < ApplicationController
   def destroy
     @subrubro.destroy
     respond_to do |format|
-      format.html { redirect_to subrubros_url, notice: 'Subrubro was successfully destroyed.' }
+      format.html { redirect_to subrubros_url, notice: 'Se borro correctamente el Sub-Rubro.' }
       format.json { head :no_content }
     end
   end

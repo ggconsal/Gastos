@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827201131) do
+ActiveRecord::Schema.define(version: 20140903174102) do
 
   create_table "formapagos", force: true do |t|
     t.string   "fpa_desc"
@@ -28,16 +28,16 @@ ActiveRecord::Schema.define(version: 20140827201131) do
     t.integer  "tipogasto_id"
     t.integer  "tipomov_id"
     t.integer  "formapago_id"
-    t.integer  "usuario_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "movimientos", ["formapago_id"], name: "index_movimientos_on_formapago_id", using: :btree
   add_index "movimientos", ["subrubro_id"], name: "index_movimientos_on_subrubro_id", using: :btree
   add_index "movimientos", ["tipogasto_id"], name: "index_movimientos_on_tipogasto_id", using: :btree
   add_index "movimientos", ["tipomov_id"], name: "index_movimientos_on_tipomov_id", using: :btree
-  add_index "movimientos", ["usuario_id"], name: "index_movimientos_on_usuario_id", using: :btree
+  add_index "movimientos", ["user_id"], name: "index_movimientos_on_user_id", using: :btree
 
   create_table "rubros", force: true do |t|
     t.string   "rub_desc"
@@ -67,12 +67,25 @@ ActiveRecord::Schema.define(version: 20140827201131) do
     t.datetime "updated_at"
   end
 
-  create_table "usuarios", force: true do |t|
-    t.string   "usu_nombre"
-    t.string   "usu_usuario"
-    t.string   "usu_clave"
+  create_table "users", force: true do |t|
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "profile_name"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

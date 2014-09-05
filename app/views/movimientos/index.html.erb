@@ -1,17 +1,17 @@
-<div class="page-header">
+<div class="page-header" style="margin-top: 20px;margin-bottom: 10px;">
   <h3><u>Todos los Movimientos</u></h3>
 </div>
 
 <table  id="tabla-movimientos" class="table table-hover table-condensed">
   <thead>
     <tr>
-      <th>Fecha</th>
-      <th>Rubro</th>
-      <th>Sub-rubro</th>
-      <th>Importe</th>
-      <th>Tipo-Mov</th>
-      <th>Tipo-Gasto</th>
-      <th>Forma-pago</th>
+      <th id="columna-center">Fecha</th>
+      <th id="columna-center">Rubro</th>
+      <th id="columna-center">Sub-rubro</th>
+      <th id="columna-nro">Importe</th>
+      <th id="columna-center">Tipo-Mov</th>
+      <th id="columna-center">Tipo-Gasto</th>
+      <th id="columna-center">Forma-pago</th>
       <th>Observaciones</th>
       <th colspan="1"></th>
     </tr>
@@ -20,19 +20,15 @@
     <% @movimientos.each do |vMovimiento| %>
       <tr>
         <td id="columna-fecha"><%= vMovimiento.mov_fecha.day.to_s %>-<%= vMovimiento.mov_fecha.month .to_s %></td>
-<!--        <td><%= vMovimiento.mov_lote %></td> -->
         <td id="columna-fecha"> <% @tmprubros = Rubro.find(vMovimiento.subrubro.rubro_id) %>
              <%= @tmprubros.rub_desc %> </td>
-        <td id="columna-mmb"><%= vMovimiento.subrubro.sru_desc %></td>
-        <td id="columna-mmb"><%= vMovimiento.mov_importe %></td>
-        <td><%= vMovimiento.tipomov.tmo_desc %></td>
-        <td><%= vMovimiento.tipogasto.tga_desc %></td>
+        <td id="columna-fecha"><%= vMovimiento.subrubro.sru_desc %></td>
+        <td id="columna-nro"><%= number_to_currency(vMovimiento.mov_importe, negative_format: "(%u%n)") %></td>
+        <td id="columna-center"><%= vMovimiento.tipomov.tmo_desc %></td>
+        <td id="columna-center"><%= vMovimiento.tipogasto.tga_desc %></td>
         <td id="columna-mmb"><%= vMovimiento.formapago.fpa_desc %></td>
         <td><%= vMovimiento.mov_obs %></td>
         <td id="columna-mmb"><%= link_to 'Modificar', edit_movimiento_path(vMovimiento) %></td>
-<!--        <td><%= vMovimiento.usuario.usu_nombre %></td> 
-        <td id="columna-mmb"><%= link_to 'Mostrar', vMovimiento %></td>
-        <td id="columna-mmb"><%= link_to 'Borrar', vMovimiento, method: :delete, data: { confirm: 'Estas seguro que queres Borrar?' } %></td> -->
       </tr>
     <% end %>
   </tbody>

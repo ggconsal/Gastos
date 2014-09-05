@@ -32,7 +32,7 @@ class MovimientosController < ApplicationController
 
     respond_to do |format|
       if @movimiento.save
-        format.html { redirect_to @movimiento, notice: 'Movimiento was successfully created.' }
+        format.html { redirect_to @movimiento, notice: 'Se creo correctamente el movimiento.' }
         format.json { render :show, status: :created, location: @movimiento }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class MovimientosController < ApplicationController
   def update
     respond_to do |format|
       if @movimiento.update(movimiento_params)
-        format.html { redirect_to @movimiento, notice: 'Movimiento was successfully updated.' }
+        format.html { redirect_to @movimiento, notice: 'Se actualizo correctamente el movimiento.' }
         format.json { render :show, status: :ok, location: @movimiento }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class MovimientosController < ApplicationController
   def destroy
     @movimiento.destroy
     respond_to do |format|
-      format.html { redirect_to movimientos_url, notice: 'Movimiento was successfully destroyed.' }
+      format.html { redirect_to movimientos_url, notice: 'Se borro correctamente el movimiento.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +73,6 @@ class MovimientosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movimiento_params
-      params.require(:movimiento).permit(:mov_fecha, :mov_importe, :mov_obs, :mov_lote, :subrubro_id, :tipogasto_id, :tipomov_id, :formapago_id, :usuario_id)
+      params.require(:movimiento).permit(:mov_fecha, :mov_importe, :mov_obs, :mov_lote, :subrubro_id, :tipogasto_id, :tipomov_id, :formapago_id, :user_id)
     end
 end

@@ -28,7 +28,7 @@ class TipogastosController < ApplicationController
 
     respond_to do |format|
       if @tipogasto.save
-        format.html { redirect_to @tipogasto, notice: 'Tipogasto was successfully created.' }
+        format.html { redirect_to @tipogasto, notice: 'Se creo correctamente el Tipo de gasto.' }
         format.json { render :show, status: :created, location: @tipogasto }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TipogastosController < ApplicationController
   def update
     respond_to do |format|
       if @tipogasto.update(tipogasto_params)
-        format.html { redirect_to @tipogasto, notice: 'Tipogasto was successfully updated.' }
+        format.html { redirect_to @tipogasto, notice: 'Se actualizo correctamente el Tipo de gasto.' }
         format.json { render :show, status: :ok, location: @tipogasto }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TipogastosController < ApplicationController
   def destroy
     @tipogasto.destroy
     respond_to do |format|
-      format.html { redirect_to tipogastos_url, notice: 'Tipogasto was successfully destroyed.' }
+      format.html { redirect_to tipogastos_url, notice: 'Se borro correctamente el Tipo de gasto.' }
       format.json { head :no_content }
     end
   end

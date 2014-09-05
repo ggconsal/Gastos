@@ -2,13 +2,11 @@
   <h3><u>Sub-Rubro</u>: <%= @subrubro.sru_desc %></h3>
 </div>
 
-<p id="notice"><%= notice %></p>
-
 <p> <strong>Rubro:</strong></p>
   <%= @subrubro.rubro.rub_desc %>
 
 <div class="actions">
   <br><br>
-  <%= link_to "Modificar", edit_subrubro_path(@subrubro),  :class => "btn btn-inverse" %>
-  <%= link_to 'Ir Atras', subrubros_path, class: "btn btn-inverse" %>
+  <%= link_to "Modificar", edit_subrubro_path(@subrubro),  :class => "btn btn-primary" %>
+  <%= link_to 'Ir Atras', subrubros_path, class: "btn btn-primary" %>
 </div>

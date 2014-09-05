@@ -13,18 +13,19 @@
 
 
 <form class="form-inline" role="form">
+
   <div id="form-new" class="form-group has-success has-feedback">
     <%= f.date_field :mov_fecha, :placeholder => "Ingrese la Fecha de alta...", :class=>"form-control", :value => Date.today  %>
   </div>
 
   <div id="form-new" class="form-group has-success has-feedback">
-    <%= f.text_field :mov_lote, :number => "text", :placeholder => "Ingrese el Lote...", :class=>"form-control" %>
+    <%= f.text_field :mov_lote, :number => "text", :placeholder => "Ingrese el Lote...", :class=>"form-control", autofocus: true %>
   </div>
 
   <div id="form-new2" class="input-group has-success has-feedback">
     <!-- <%= f.label :mov_importe %><br> -->
     <span class="input-group-addon">$</span>
-    <%= f.text_field :mov_importe, :number => "text", :placeholder => "Ingrese importe...", :class=>"form-control" %>
+    <%= f.text_field :mov_importe, :number => "text", :placeholder => "Ingrese importe...", :id => "columna-nro", :class=>"form-control" %>
     <span class="input-group-addon">.00</span>
   </div>
   
@@ -46,17 +47,20 @@
   </div>
 
   <div id="form-new" class="form-group has-success has-feedback">
-    <%= f.collection_select(:usuario_id, Usuario.all, :id, :usu_nombre, {:prompt => 'Seleccione un Usuario...'}, {:style=>'width:100%', :class=>"form-control"}) %>
-  </div>
-
-  <div id="form-new" class="form-group has-success has-feedback">
     <!--<%= f.label :mov_obs %><br> -->
     <%= f.text_area :mov_obs, :placeholder => "Ingrese una Observacion...", :class=>"form-control", :style=>'width:100%' %>
   </div>
   
+  <div id="form-new" class="form-group has-success has-feedback">
+    <%= f.collection_select(:user_id, User.all, :id, :nombre_completo, {:prompt => 'Seleccione un usuario...'}, {:style=>'width:100%', :class=>"form-control"}) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Confirmar", :class => "btn btn-primary" %>
     <%= link_to 'Ir Atras', movimientos_path, class: "btn btn-primary" %>
+    <%- if @vMostrarBorrar %>
+    <%= link_to 'Borrar', @movimiento, method: :delete, data: { confirm: 'Esta seguro que desea borrar este movimiento?' }, :id => "boton-borrar", :class => "btn btn-primary" %>
+    <% end -%>
   </div>
 
 </form>

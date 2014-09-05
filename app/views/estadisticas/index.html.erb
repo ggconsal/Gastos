@@ -15,7 +15,7 @@
 <!--      <div id="collapseOne" class="panel-collapse collapse in"> -->
       <div id="collapseOne" class="panel-collapse collapse">
          <div class="panel-body">
-            <% @vTMPMovs = Movimiento.joins(subrubro: :rubro).select("rub_desc, sum(mov_importe) importe").where("usuario_id in (1, 2)").order("rubro_id").group("rubro_id") %>
+            <% @vTMPMovs = Movimiento.joins(subrubro: :rubro).select("rub_desc, sum(mov_importe) importe").order("rubro_id").group("rubro_id") %>
 						<table  id="tabla-movimientos" class="table table-hover table-condensed">
 						  <thead>
 						    <tr>
@@ -27,7 +27,7 @@
 						    <% @vTMPMovs.each do |vMovimiento| %>
 						      <tr>
 						        <td id="columna-mmb"><%= vMovimiento.rub_desc %></td>
-						        <td id="columna-mmb"><%= vMovimiento.importe %></td>
+						        <td id="columna-mmb"><%= number_to_currency(vMovimiento.importe, negative_format: "(%u%n)") %></td>
 						      </tr>
 						    <% end %>
 						  </tbody>
@@ -46,7 +46,7 @@
       </div>
       <div id="collapseTwo" class="panel-collapse collapse">
          <div class="panel-body">
-            <% @vTMPMovs = Movimiento.joins(subrubro: :rubro).select("rub_desc, sru_desc, sum(mov_importe) importe").where("usuario_id in (1, 2)").order("rubro_id, subrubro_id").group("rubro_id, subrubro_id") %>
+            <% @vTMPMovs = Movimiento.joins(subrubro: :rubro).select("rub_desc, sru_desc, sum(mov_importe) importe").order("rubro_id, subrubro_id").group("rubro_id, subrubro_id") %>
 						<table  id="tabla-movimientos" class="table table-hover table-condensed">
 						  <thead>
 						    <tr>
@@ -60,7 +60,7 @@
 						      <tr>
 						        <td id="columna-mmb"><%= vMovimiento.rub_desc %></td>
 						        <td id="columna-mmb"><%= vMovimiento.sru_desc %></td>
-						        <td id="columna-mmb"><%= vMovimiento.importe %></td>
+						        <td id="columna-mmb"><%= number_to_currency(vMovimiento.importe, negative_format: "(%u%n)") %></td>
 						      </tr>
 						    <% end %>
 						  </tbody>
@@ -79,7 +79,7 @@
       </div>
       <div id="collapseThree" class="panel-collapse collapse">
          <div class="panel-body">
-            <% @vTMPMovs = Movimiento.joins(:tipogasto).select("tga_desc, sum(mov_importe) importe").where("usuario_id in (1, 2)").group("tipogasto_id") %>
+            <% @vTMPMovs = Movimiento.joins(:tipogasto).select("tga_desc, sum(mov_importe) importe").group("tipogasto_id") %>
 						<table  id="tabla-movimientos" class="table table-hover table-condensed">
 						  <thead>
 						    <tr>
@@ -91,7 +91,7 @@
 						    <% @vTMPMovs.each do |vMovimiento| %>
 						      <tr>
 						        <td id="columna-mmb"><%= vMovimiento.tga_desc %></td>
-						        <td id="columna-mmb"><%= vMovimiento.importe %></td>
+						        <td id="columna-mmb"><%= number_to_currency(vMovimiento.importe, negative_format: "(%u%n)") %></td>
 						      </tr>
 						    <% end %>
 						  </tbody>
@@ -110,7 +110,7 @@
       </div>
       <div id="collapseFour" class="panel-collapse collapse">
          <div class="panel-body">
-            <% @vTMPMovs = Movimiento.joins(:tipomov).select("tmo_desc, sum(mov_importe) importe").where("usuario_id in (1, 2)").group("tipomov_id") %>
+            <% @vTMPMovs = Movimiento.joins(:tipomov).select("tmo_desc, sum(mov_importe) importe").group("tipomov_id") %>
 						<table  id="tabla-movimientos" class="table table-hover table-condensed">
 						  <thead>
 						    <tr>
@@ -122,7 +122,7 @@
 						    <% @vTMPMovs.each do |vMovimiento| %>
 						      <tr>
 						        <td id="columna-mmb"><%= vMovimiento.tmo_desc %></td>
-						        <td id="columna-mmb"><%= vMovimiento.importe %></td>
+						        <td id="columna-mmb"><%= number_to_currency(vMovimiento.importe, negative_format: "(%u%n)") %></td>
 						      </tr>
 						    <% end %>
 						  </tbody>
@@ -132,10 +132,3 @@
    </div>
 </div>
 
-
-<!--
-<div>
-	<br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br>
-</div>
--->

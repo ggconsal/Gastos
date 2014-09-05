@@ -1,7 +1,8 @@
 /* temas propios del proyecto **** eGastos **** */
 #form-new {
   width: 440px;
-/*  margin-left: 88px;*/
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 #form-new2 {
@@ -10,11 +11,19 @@
 /*  margin-left: 88px;*/
 }
 
+#boton-borrar {
+  margin-left: 195px;
+}
 
+#campo-checkbox {
+  width: 80px;
+}
 
 #Contenedor-menu-interno {
-  width: 940px;
+  width: 1045px;
   margin-left: 88px;
+  margin-right: 60px;
+  padding-right: 0px;
 }
 
 #Contenedor-general {
@@ -33,12 +42,22 @@
   width: 960px;
 }
 
+#columna-nro {
+  text-align: right;
+  padding-right: 8px;
+}
+
+#columna-center {
+  text-align: center;
+}
+
 #columna-mmb {
   width: 10px;
 }
 
 #columna-fecha {
   width: 30px;
+  text-align: center;
 }
 
 #columna-texto-largo {

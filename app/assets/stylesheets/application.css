@@ -15,6 +15,7 @@
  */
 
 = require bootstrap
+= require jquery
 
 /*body {
 	padding-top: 40px;

@@ -28,7 +28,7 @@ class FormapagosController < ApplicationController
 
     respond_to do |format|
       if @formapago.save
-        format.html { redirect_to @formapago, notice: 'Formapago was successfully created.' }
+        format.html { redirect_to @formapago, notice: 'Se creo correctamente la Forma de Pago.' }
         format.json { render :show, status: :created, location: @formapago }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FormapagosController < ApplicationController
   def update
     respond_to do |format|
       if @formapago.update(formapago_params)
-        format.html { redirect_to @formapago, notice: 'Formapago was successfully updated.' }
+        format.html { redirect_to @formapago, notice: 'Se actualizo correctamente la Forma de Pago.' }
         format.json { render :show, status: :ok, location: @formapago }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class FormapagosController < ApplicationController
   def destroy
     @formapago.destroy
     respond_to do |format|
-      format.html { redirect_to formapagos_url, notice: 'Formapago was successfully destroyed.' }
+      format.html { redirect_to formapagos_url, notice: 'Se borro correctamente la Forma de Pago.' }
       format.json { head :no_content }
     end
   end

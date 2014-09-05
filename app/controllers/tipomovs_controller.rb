@@ -28,7 +28,7 @@ class TipomovsController < ApplicationController
 
     respond_to do |format|
       if @tipomov.save
-        format.html { redirect_to @tipomov, notice: 'Tipomov was successfully created.' }
+        format.html { redirect_to @tipomov, notice: 'Se creo correctamente el Tipo de movimiento.' }
         format.json { render :show, status: :created, location: @tipomov }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TipomovsController < ApplicationController
   def update
     respond_to do |format|
       if @tipomov.update(tipomov_params)
-        format.html { redirect_to @tipomov, notice: 'Tipomov was successfully updated.' }
+        format.html { redirect_to @tipomov, notice: 'Se actualizo correctamente el Tipo de movimiento.' }
         format.json { render :show, status: :ok, location: @tipomov }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TipomovsController < ApplicationController
   def destroy
     @tipomov.destroy
     respond_to do |format|
-      format.html { redirect_to tipomovs_url, notice: 'Tipomov was successfully destroyed.' }
+      format.html { redirect_to tipomovs_url, notice: 'Se borro correctamente el Tipo de movimiento.' }
       format.json { head :no_content }
     end
   end

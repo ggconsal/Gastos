@@ -1,4 +1,4 @@
-<%= form_for(@rubro) do |f| %>
+<%= form_for(@rubro, html: {class: "form-horizontal"}) do |f| %>
   <% if @rubro.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@rubro.errors.count, "error") %> prohibited this rubro from being saved:</h2>
@@ -11,15 +11,26 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :rub_desc %><br>
-    <%= f.text_field :rub_desc %>
+  
+<form class="form-inline" role="form">
+
+  <div id="form-new" class="form-group has-success has-feedback">
+    <%= f.text_field :rub_desc, :placeholder => "Ingrese la descripcion del Rubro...", :class=>"form-control", autofocus: true %>
   </div>
-  <div class="field">
-    <%= f.label :rub_suma %><br>
-    <%= f.check_box :rub_suma %>
+
+  <div id="form-new" class="form-group has-success has-feedback">
+    <%= f.label "El rubro suma?" %>
+    <%= f.check_box :rub_suma, :id=>"campo-checkbox", :class=>"form-control" %>
   </div>
+
+</form>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Confirmar", :class => "btn btn-primary" %>
+    <%= link_to 'Ir Atras', rubros_path, class: "btn btn-primary" %>
+    <%- if @vMostrarBorrar %>
+      <%= link_to 'Borrar', @rubro, method: :delete, data: { confirm: 'Esta seguro que desea borrar este rubro?' }, :id => "boton-borrar", :class => "btn btn-primary" %>
+    <% end -%>
   </div>
+
 <% end %>
