@@ -30,6 +30,8 @@ class MovimientosController < ApplicationController
   def create
     @movimiento = Movimiento.new(movimiento_params)
 
+    @movimiento.user = current_user
+
     respond_to do |format|
       if @movimiento.save
         format.html { redirect_to @movimiento, notice: 'Se creo correctamente el movimiento.' }

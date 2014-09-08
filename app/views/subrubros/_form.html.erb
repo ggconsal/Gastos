@@ -11,17 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Descripcion del Sub-Rubro" %><br>
-    <%= f.text_field :sru_desc %>
-  </div>
-  <div class="field">
-    <%= f.label "Rubro al que pertenece" %><br>
-    <%= f.text_field :rubro_id %>
-  </div>
-  <div class="actions">
-    <br><br>
-    <%= f.submit "Confirmar", :class => "btn btn-primary" %>
-    <%= link_to 'Ir Atras', subrubros_path, class: "btn btn-primary" %>
-  </div>
+  <form class="form-inline" role="form">
+
+    <div id="form-new" class="form-group has-success has-feedback">
+      <%= f.text_field :sru_desc, :placeholder => "Ingrese la Descripcion del Sub-Rubro...", :class=>"form-control", autofocus: true %>
+    </div>
+
+    <div id="form-new" class="form-group has-success has-feedback">
+      <%= f.collection_select(:rubro_id, Rubro.all, :id, :rub_desc, {:prompt => 'Seleccione un Rubro...'}, {:style=>'width:100%', :class=>"form-control"}) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Confirmar", :class => "btn btn-primary" %>
+      <%= link_to 'Ir Atras', subrubros_path, class: "btn btn-primary" %>
+      <%- if @vMostrarBorrar %>
+        <%= link_to 'Borrar', @subrubro, method: :delete, data: { confirm: 'Esta seguro que desea borrar este Sub-Rubro?' }, :id => "boton-borrar", :class => "btn btn-primary" %>
+      <% end -%>
+    </div>
+
+  </form>
+
 <% end %>

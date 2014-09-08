@@ -12,58 +12,71 @@
   <% end %>
 
 
-<form class="form-inline" role="form">
+  <form class="form-inline" role="form">
 
-  <div id="form-new" class="form-group has-success has-feedback">
-    <%= f.date_field :mov_fecha, :placeholder => "Ingrese la Fecha de alta...", :class=>"form-control", :value => Date.today  %>
-  </div>
+    <div id="form-new" class="form-group has-success has-feedback">
+      <%= f.date_field :mov_fecha, :placeholder => "Ingrese la Fecha de alta...", :class=>"form-control", :value => Date.today  %>
+    </div>
 
-  <div id="form-new" class="form-group has-success has-feedback">
-    <%= f.text_field :mov_lote, :number => "text", :placeholder => "Ingrese el Lote...", :class=>"form-control", autofocus: true %>
-  </div>
+    <div id="form-new" class="form-group has-success has-feedback">
+      <%= f.text_field :mov_lote, :number => "text", :placeholder => "Ingrese el Lote...", :class=>"form-control", autofocus: true %>
+    </div>
 
-  <div id="form-new2" class="input-group has-success has-feedback">
-    <!-- <%= f.label :mov_importe %><br> -->
-    <span class="input-group-addon">$</span>
-    <%= f.text_field :mov_importe, :number => "text", :placeholder => "Ingrese importe...", :id => "columna-nro", :class=>"form-control" %>
-    <span class="input-group-addon">.00</span>
-  </div>
-  
-  <div id="form-new" class="form-group has-success has-feedback">
-    <!--    <%= f.select :subrubro_id, Subrubro.all.collect {|p| [ p.sru_desc, p.id ] }, :class => "form-control" %>  -->
-    <%= f.collection_select(:subrubro_id, Subrubro.all, :id, :sru_desc, {:prompt => 'Seleccione un Sub-Rubro...'}, {:style=>'width:100%', :class=>"form-control"}) %>
-  </div>
+    <div id="form-new2" class="input-group has-success has-feedback">
+      <!-- <%= f.label :mov_importe %><br> -->
+      <span class="input-group-addon">$</span>
+      <%= f.text_field :mov_importe, :number => "text", :placeholder => "Ingrese importe...", :id => "columna-nro", :class=>"form-control" %>
+      <span class="input-group-addon">.00</span>
+    </div>
+    
+    <div id="form-new" class="form-group has-success has-feedback">
+      <!--    <%= f.select :subrubro_id, Subrubro.all.collect {|p| [ p.sru_desc, p.id ] }, :class => "form-control" %>  -->
+      <%= f.collection_select(:subrubro_id, Subrubro.all, :id, :sru_desc, {:prompt => 'Seleccione un Sub-Rubro...'}, {:style=>'width:100%', :class=>"form-control"}) %>
+    </div>
 
-  <div id="form-new" class="form-group has-success has-feedback">
-    <%= f.collection_select(:tipogasto_id, Tipogasto.all, :id, :tga_desc, {:prompt => 'Seleccione un Tipo-Gasto...'}, {:style=>'width:100%', :class=>"form-control"}) %>
-  </div>
+    <div id="form-new" class="form-group has-success has-feedback">
+      <%= f.collection_select(:tipogasto_id, Tipogasto.all, :id, :tga_desc, {:prompt => 'Seleccione un Tipo-Gasto...'}, {:style=>'width:100%', :class=>"form-control"}) %>
+    </div>
 
-  <div id="form-new" class="form-group has-success has-feedback">
-    <%= f.collection_select(:tipomov_id, Tipomov.all, :id, :tmo_desc, {:prompt => 'Seleccione un Tipo-Movimiento...'}, {:style=>'width:100%', :class=>"form-control"}) %>
-  </div>
+    <div id="form-new" class="form-group has-success has-feedback">
+      <%= f.collection_select(:tipomov_id, Tipomov.all, :id, :tmo_desc, {:prompt => 'Seleccione un Tipo-Movimiento...'}, {:style=>'width:100%', :class=>"form-control"}) %>
+    </div>
 
-  <div id="form-new" class="form-group has-success has-feedback">
-    <%= f.collection_select(:formapago_id, Formapago.all, :id, :fpa_desc, {:prompt => 'Seleccione un Forma-Pago...'}, {:style=>'width:100%', :class=>"form-control"}) %>
-  </div>
+    <div id="form-new" class="form-group has-success has-feedback">
+      <%= f.collection_select(:formapago_id, Formapago.all, :id, :fpa_desc, {:prompt => 'Seleccione un Forma-Pago...'}, {:style=>'width:100%', :class=>"form-control"}) %>
+    </div>
 
-  <div id="form-new" class="form-group has-success has-feedback">
-    <!--<%= f.label :mov_obs %><br> -->
-    <%= f.text_area :mov_obs, :placeholder => "Ingrese una Observacion...", :class=>"form-control", :style=>'width:100%' %>
-  </div>
-  
-  <div id="form-new" class="form-group has-success has-feedback">
-    <%= f.collection_select(:user_id, User.all, :id, :nombre_completo, {:prompt => 'Seleccione un usuario...'}, {:style=>'width:100%', :class=>"form-control"}) %>
-  </div>
+    <div id="form-new" class="form-group has-success has-feedback">
+      <!--<%= f.label :mov_obs %><br> -->
+      <%= f.text_area :mov_obs, :placeholder => "Ingrese una Observacion...", :class=>"form-control", :style=>'width:100%' %>
+    </div>
+    
+    <div id="form-new" class="form-control">
 
-  <div class="actions">
-    <%= f.submit "Confirmar", :class => "btn btn-primary" %>
-    <%= link_to 'Ir Atras', movimientos_path, class: "btn btn-primary" %>
-    <%- if @vMostrarBorrar %>
-    <%= link_to 'Borrar', @movimiento, method: :delete, data: { confirm: 'Esta seguro que desea borrar este movimiento?' }, :id => "boton-borrar", :class => "btn btn-primary" %>
-    <% end -%>
-  </div>
+      <% if @vEditar %>
+        <% if @movimiento.user_id %>
+          Usuario:  <%= @movimiento.user.nombre_completo %>
+        <%else%>
+          ERROR: Movimiento sin Usuario.
+        <%end%>
+      <%else%>
+        <% if user_signed_in? %>
+          Usuario: <%= current_user.nombre_completo %>
+        <%else%>
+          ERROR: Usuario no ingreso al Sistema.
+        <%end%>
+      <%end%>
+    </div><br>
 
-</form>
+    <div class="actions">
+      <%= f.submit "Confirmar", :class => "btn btn-primary" %>
+      <%= link_to 'Ir Atras', movimientos_path, class: "btn btn-primary" %>
+      <%- if @vEditar %>
+        <%= link_to 'Borrar', @movimiento, method: :delete, data: { confirm: 'Esta seguro que desea borrar este movimiento?' }, :id => "boton-borrar", :class => "btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </form>
 
 <% end %>
 

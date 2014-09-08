@@ -2,24 +2,22 @@
   <h3><u>Todos los Sub-Rubros</u></h3>
 </div>
 
-<table class="table table-condensed">
+<table id="form-new" class="table table-hover table-condensed">
   <thead>
     <tr>
       <th>#</th>
-      <th>Descripcion</th>
       <th>Rubro</th>
+      <th>Descripcion</th>
     </tr>
   </thead>
   <tbody>
     <% @subrubros.each do |vSubrubro| %>
       <tr>
         <td> <%= vSubrubro.id %> </td>
-        <td> <%= vSubrubro.sru_desc %> </td>
         <td> <% @tmprubros = Rubro.find(vSubrubro.rubro_id) %> 
              <%= @tmprubros.rub_desc %> </td>
-        <td id="columna-mmb"><%= link_to 'Mostrar', vSubrubro %></td>
+        <td> <%= vSubrubro.sru_desc %> </td>
         <td id="columna-mmb"><%= link_to 'Modificar', edit_subrubro_path(vSubrubro) %></td>
-        <td id="columna-mmb"><%= link_to 'Borrar', vSubrubro, method: :delete, data: { confirm: 'Estas seguro que queres Borrar?' } %></td>
       </tr>
     <% end %>
   </tbody>
