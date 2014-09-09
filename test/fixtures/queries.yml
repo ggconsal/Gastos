@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  con_fechad: 2014-09-09
+  con_fechah: 2014-09-09
+  con_descripcion: MyText
+  user_id: 
+
+two:
+  con_fechad: 2014-09-09
+  con_fechah: 2014-09-09
+  con_descripcion: MyText
+  user_id: 

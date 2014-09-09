@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903174102) do
+ActiveRecord::Schema.define(version: 20140909182346) do
 
   create_table "formapagos", force: true do |t|
     t.string   "fpa_desc"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20140903174102) do
   add_index "movimientos", ["tipogasto_id"], name: "index_movimientos_on_tipogasto_id", using: :btree
   add_index "movimientos", ["tipomov_id"], name: "index_movimientos_on_tipomov_id", using: :btree
   add_index "movimientos", ["user_id"], name: "index_movimientos_on_user_id", using: :btree
+
+  create_table "queries", force: true do |t|
+    t.date     "con_fechad"
+    t.date     "con_fechah"
+    t.text     "con_descripcion"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "queries", ["user_id"], name: "index_queries_on_user_id", using: :btree
 
   create_table "rubros", force: true do |t|
     t.string   "rub_desc"

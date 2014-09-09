@@ -1,3 +1,5 @@
+<% if user_signed_in? %>
+
 <div class="page-header" style="margin-top: 20px;margin-bottom: 10px;">
   <h3><u>Todos los Movimientos</u></h3>
 </div>
@@ -36,3 +38,8 @@
 
 <%= link_to 'Nuevo Movimiento', new_movimiento_path, class: "btn btn-primary" %>
 
+<%else%>
+  <div class="page-header">
+    <h3><u>Usuario no ingreso al Sistema.</u></h3>
+  </div>
+<%end%>

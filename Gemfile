@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Generacion de usuarios
 gem 'devise'
-gem 'simple_form'
+# gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :queries
+
 #  devise_for :users
   devise_for :users, :controllers => { registrations: 'registrations' }
 
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root to: 'estadisticas#index'
+  root to: 'queries#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
