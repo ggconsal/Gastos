@@ -27,10 +27,11 @@ class QueriesController < ApplicationController
     @query = Query.new(query_params)
 
     @query.user = current_user
+    @query.con_descripcion = @vConDescripcion
 
     respond_to do |format|
       if @query.save
-        format.html { redirect_to @query, notice: 'Queryss was successfully created.' }
+        format.html { redirect_to @query, notice: 'Consultas ejecutadas correctamente.' }
         format.json { render :show, status: :created, location: @query }
       else
         format.html { render :new }

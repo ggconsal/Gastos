@@ -26,6 +26,7 @@
     <!--      <div id="collapseOne" class="panel-collapse collapse in"> -->
           <div id="collapseOne" class="panel-collapse collapse">
              <div class="panel-body">
+                <% @vConDescripcion = "Estadisticas - Agrupado por Rubro" %>
                 <% @vTMPMovs = Movimiento.joins(subrubro: :rubro).select("rub_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", @query.con_fechad.to_s, @query.con_fechah.to_s).order("rubro_id").group("rubro_id") %>
                 <table  id="form-new" class="table table-hover table-condensed">
                   <thead>
@@ -57,6 +58,7 @@
           </div>
           <div id="collapseTwo" class="panel-collapse collapse">
              <div class="panel-body">
+                <% @vConDescripcion = "Estadisticas - Agrupado por Sub-Rubro" %>
                 <% @vTMPMovs = Movimiento.joins(subrubro: :rubro).select("rub_desc, sru_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", @query.con_fechad.to_s, @query.con_fechah.to_s).order("rubro_id, subrubro_id").group("rubro_id, subrubro_id") %>
                 <table  id="form-new" class="table table-hover table-condensed">
                   <thead>
@@ -90,6 +92,7 @@
           </div>
           <div id="collapseThree" class="panel-collapse collapse">
              <div class="panel-body">
+                <% @vConDescripcion = "Estadisticas - Agrupado por Tipo de Gasto" %>
                 <% @vTMPMovs = Movimiento.joins(:tipogasto).select("tga_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", @query.con_fechad.to_s, @query.con_fechah.to_s).group("tipogasto_id") %>
                 <table  id="form-new" class="table table-hover table-condensed">
                   <thead>
@@ -121,6 +124,7 @@
           </div>
           <div id="collapseFour" class="panel-collapse collapse">
              <div class="panel-body">
+                <% @vConDescripcion = "Estadisticas - Agrupado por Tipo de Movimiento" %>
                 <% @vTMPMovs = Movimiento.joins(:tipomov).select("tmo_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", @query.con_fechad.to_s, @query.con_fechah.to_s).group("tipomov_id") %>
                 <table  id="form-new" class="table table-hover table-condensed">
                   <thead>
@@ -142,6 +146,11 @@
           </div>
        </div>
     </div>
+
+  <div class="actions">
+    <br><br>
+    <%= link_to 'Ir Atras', new_query_path, class: "btn btn-primary" %>
+  </div>
 
   </form>
 <% end %>

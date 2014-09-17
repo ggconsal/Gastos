@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h3><u>Rubro</u>: <%= @rubro.rub_desc %></h3>
+</div>
 
-<p>
-  <strong>Rub desc:</strong>
-  <%= @rubro.rub_desc %>
-</p>
+  <% if @rubro.rub_suma %>
+		<p> <strong>Suma?:  SI</strong></p>
+  <% else %>
+		<p> <strong>Suma?:  NO</strong></p>
+  <% end %>
 
-<p>
-  <strong>Rub suma:</strong>
-  <%= @rubro.rub_suma %>
-</p>
+<div class="actions">
+  <br><br>
+  <%= link_to "Modificar", edit_rubro_path(@rubro),  :class => "btn btn-primary" %>
+  <%= link_to 'Ir Atras', rubros_path, class: "btn btn-primary" %>
+</div>
 
-<%= link_to 'Edit', edit_rubro_path(@rubro) %> |
-<%= link_to 'Back', rubros_path %>
