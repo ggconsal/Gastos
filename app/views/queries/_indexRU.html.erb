@@ -1,0 +1,6 @@
+<% @queryRU.each do |vQueryRU| %>
+  <tr>
+    <td><%= vQueryRU.rub_desc %></td>
+    <td class="right"><%= number_to_currency(vQueryRU.importe, negative_format: "(%u%n)") %></td>
+  </tr>
+<% end %>

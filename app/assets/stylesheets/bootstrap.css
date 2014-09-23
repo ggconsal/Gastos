@@ -1,11 +1,11 @@
 /* temas propios del proyecto **** eGastos **** */
-#form-new {
+.form-new {
   width: 440px;
   margin-left: 0px;
   margin-right: 0px;
 }
 
-#form-new2 {
+.form-new2 {
   width: 440px;
   margin-bottom: 15px;
 /*  margin-left: 88px;*/
@@ -51,7 +51,7 @@
   text-align: center;
 }
 
-#columna-mmb {
+.columna-mmb {
   width: 10px;
 }
 

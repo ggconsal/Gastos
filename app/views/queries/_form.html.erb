@@ -1,4 +1,4 @@
-<%= form_for(@query) do |f| %>
+<%= form_for @query, remote: true do |f| %>
   <% if @query.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@query.errors.count, "error") %> prohibited this query from being saved:</h2>
@@ -11,26 +11,22 @@
     </div>
   <% end %>
 
-  <form class="form-inline" role="form">
 
-    <div id="form-new" class="form-group has-success has-feedback">
+  <form class="form-inline" role="form">
+    <div id="fechad" class="form-new" class="form-group has-success has-feedback">
       <%= f.label "Ingrese la Fecha Desde" %>
-      <%= f.date_field :con_fechad, :class=>"form-control", :value => Date.today  %>
+      <% vPrimerdiaSTR = Date.today.year.to_s+Date.today.month.to_s.rjust(2,'0')+"01" %>
+      <% vPrimerdia = Date.parse vPrimerdiaSTR %>
+      <%= f.date_field :con_fechad, :class=>"form-control", :value => vPrimerdia  %>
     </div>
 
-    <div id="form-new" class="form-group has-success has-feedback">
+    <div id="fechah" class="form-new" class="form-group has-success has-feedback">
       <%= f.label "Ingrese la Fecha Hasta" %><br>
       <%= f.date_field :con_fechah, :class=>"form-control", :value => Date.today  %>
-    </div>
-
-<!--    <div class="field">
-      <%= f.label :con_descripcion %><br>
-      <%= f.text_area :con_descripcion %>
-    </div> -->
+    </div><br>
 
     <div class="actions">
       <%= f.submit "Confirmar", :class => "btn btn-primary" %>
     </div><br>
-
   </form>
 <% end %>

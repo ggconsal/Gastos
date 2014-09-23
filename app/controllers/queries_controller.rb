@@ -1,76 +1,45 @@
 class QueriesController < ApplicationController
-  before_action :set_query, only: [:show, :edit, :update, :destroy]
 
-  # GET /queries
-  # GET /queries.json
+  respond_to :html, :js
+
   def index
-    @queries = Query.all
+    vPrimerdia = Date.today.year.to_s+Date.today.month.to_s+"01"
+    @queryRU = Movimiento.joins(subrubro: :rubro).select("rub_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", vPrimerdia, Date.today).group("rubro_id")
+    @querySR = Movimiento.joins(subrubro: :rubro).select("rub_desc, sru_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", vPrimerdia, Date.today).group("rubro_id, subrubro_id")
+    @queryTG = Movimiento.joins(:tipogasto).select("tga_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", vPrimerdia, Date.today).group("tipogasto_id")
+    @queryTM = Movimiento.joins(:tipomov).select("tmo_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", vPrimerdia, Date.today).group("tipomov_id")
   end
 
-  # GET /queries/1
-  # GET /queries/1.json
-  def show
+  def create
+    @query = Query.create(query_params)
+    @queryRU = Movimiento.joins(subrubro: :rubro).select("rub_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", @query.con_fechad, @query.con_fechah).group("rubro_id")
+    @querySR = Movimiento.joins(subrubro: :rubro).select("rub_desc, sru_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", @query.con_fechad, @query.con_fechah).order("rubro_id, subrubro_id").group("rubro_id, subrubro_id")
+    @queryTG = Movimiento.joins(:tipogasto).select("tga_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", @query.con_fechad, @query.con_fechah).group("tipogasto_id")
+    @queryTM = Movimiento.joins(:tipomov).select("tmo_desc, sum(mov_importe) importe").where("mov_fecha between ? and ?", @query.con_fechad, @query.con_fechah).group("tipomov_id")
   end
 
-  # GET /queries/new
   def new
     @query = Query.new
   end
 
-  # GET /queries/1/edit
-  def edit
-  end
-
-  # POST /queries
-  # POST /queries.json
-  def create
-    @query = Query.new(query_params)
-
-    @query.user = current_user
-    @query.con_descripcion = @vConDescripcion
-
-    respond_to do |format|
-      if @query.save
-        format.html { redirect_to @query, notice: 'Consultas ejecutadas correctamente.' }
-        format.json { render :show, status: :created, location: @query }
-      else
-        format.html { render :new }
-        format.json { render json: @query.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /queries/1
-  # PATCH/PUT /queries/1.json
   def update
-    respond_to do |format|
-      if @query.update(query_params)
-        format.html { redirect_to @query, notice: 'Query was successfully updated.' }
-        format.json { render :show, status: :ok, location: @query }
-      else
-        format.html { render :edit }
-        format.json { render json: @query.errors, status: :unprocessable_entity }
-      end
-    end
+    @query.update_attributes(task_params)
   end
 
-  # DELETE /queries/1
-  # DELETE /queries/1.json
   def destroy
     @query.destroy
-    respond_to do |format|
-      format.html { redirect_to queries_url, notice: 'Query was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def all_tasks
+      @queries = Query.all
+    end
+
     def set_query
       @query = Query.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def query_params
       params.require(:query).permit(:con_fechad, :con_fechah, :con_descripcion, :user_id)
     end

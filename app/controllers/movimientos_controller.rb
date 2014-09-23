@@ -32,6 +32,16 @@ class MovimientosController < ApplicationController
 
     @movimiento.user = current_user
 
+    qRubros = Subrubro.joins(:rubro).select("rub_suma").where("subrubros.id = ?", @movimiento.subrubro_id)
+
+    qRubros.each do |ru|
+      vSuma = ru.rub_suma
+    end
+
+    if vSuma = 0
+      @movimiento.mov_importe = @movimiento.mov_importe * -1
+    end
+
     respond_to do |format|
       if @movimiento.save
         format.html { redirect_to @movimiento, notice: 'Se creo correctamente el movimiento.' }

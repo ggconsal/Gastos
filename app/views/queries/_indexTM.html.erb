@@ -1,0 +1,6 @@
+<% @queryTM.each do |vqueryTM| %>
+  <tr>
+    <td><%= vqueryTM.tmo_desc %></td>
+    <td class="right"><%= number_to_currency(vqueryTM.importe, negative_format: "(%u%n)") %></td>
+  </tr>
+<% end %>

@@ -10,19 +10,25 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require bootstrap
  *= require_self
  */
 
-= require bootstrap
-= require jquery
-
-/*body {
-	padding-top: 40px;
-	background-color: #005050;
-}*/
+@import "bootstrap";
 
 .page-header {
 margin: 20px 0 10px;
 }
 
+.col-md-4 {
+	margin-left: 20px;
+}
+
+.col-md-6 {
+	margin-left: 40px;
+}
+
+.right {
+  text-align: right;
+  padding-right: 15px;
+}

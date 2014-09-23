@@ -1,0 +1,6 @@
+<% @queryTG.each do |vqueryTG| %>
+  <tr>
+    <td><%= vqueryTG.tga_desc %></td>
+    <td class="right"><%= number_to_currency(vqueryTG.importe, negative_format: "(%u%n)") %></td>
+  </tr>
+<% end %>
